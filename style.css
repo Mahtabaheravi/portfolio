@@ -36,9 +36,19 @@ nav a {
     text-decoration: none;
     font-size: 15px;
     color: #555;
+    transition: color 0.5s ease;
 }
 nav a:hover{
     color: #C9A66B;
+    text-decoration: underline;
+}
+.menu-btn {
+    display: none;
+    border: none;
+    background: none;
+    font-size: 24px;
+    color: #315C50;
+    cursor: pointer;
 }
 .home{
     width: 90%;
@@ -60,11 +70,55 @@ nav a:hover{
     margin-bottom: 8px;
     font-weight: bold;
 }
-.home h1{
+.my-name {
     margin: 0;
     font-size: 55px;
     color: #315C50;
+    font-weight: bold;
+    letter-spacing: -6px;
 }
+
+.my-name span {
+    display: inline-block;
+    opacity: 0;
+    animation: showLetter 4s infinite;
+}
+
+@keyframes showLetter{
+    0% {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    8% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    75% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    90% {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    100% {
+        opacity: 0;
+    }
+}
+.my-name span:nth-child(1)  { animation-delay: 0s; }
+.my-name span:nth-child(2)  { animation-delay: 0.15s; }
+.my-name span:nth-child(3)  { animation-delay: 0.30s; }
+.my-name span:nth-child(4)  { animation-delay: 0.45s; }
+.my-name span:nth-child(5)  { animation-delay: 0.60s; }
+.my-name span:nth-child(6)  { animation-delay: 0.75s; }
+.my-name span:nth-child(7)  { animation-delay: 0.90s; }
+.my-name span:nth-child(8)  { animation-delay: 1.05s; }
+.my-name span:nth-child(9)  { animation-delay: 1.20s; }
+.my-name span:nth-child(10) { animation-delay: 1.35s; }
+.my-name span:nth-child(11) { animation-delay: 1.50s; }
+.my-name span:nth-child(12) { animation-delay: 1.65s; }
+.my-name span:nth-child(13) { animation-delay: 1.80s; }
+.my-name span:nth-child(14) { animation-delay: 1.95s; }
 .home h2 {
     margin: 10px 0 18px;
     font-size: 25px;
@@ -91,9 +145,13 @@ nav a:hover{
     color: white;
     text-decoration: none;
     border-radius: 6px;
+    transition: background 0.3s ease,
+      color 0.3s ease, transform 0.2s ease;
 }
 .btn:hover, .button:hover{
     background-color: #C9A66B;
+    color: #315C50;
+    transform: translateY(-3px);
 }
 .btn2{
     display: inline-block;
@@ -106,6 +164,11 @@ nav a:hover{
 .btn2:hover{
     background-color: #315C50;
     color: white;
+}
+.btn:active,
+.button:active,
+.btn2:active{
+    transform: scale(0.5);
 }
 .home-photo{
     width: 350px;
@@ -128,6 +191,10 @@ nav a:hover{
     height: 100%;
     object-fit: cover;
     display: block;
+    transition: transform 0.3s linear;
+}
+.photo-box img:hover{
+    transform: scale(1.1);
 }
 .about,.skills,
 .projects, .contact {
@@ -219,10 +286,10 @@ nav a:hover{
     border: 1px solid #E5DDD2;
     border-radius: 10px;
     overflow: hidden;
-    transition: 0.3s;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 .project:hover{
-    transform: translateY(-6px);
+    transform: translateY(-8px);
     box-shadow: 0 10px 25px rgba(49, 92, 80, 0.12);
 }
 .project-image{
@@ -235,7 +302,10 @@ nav a:hover{
     height: 100%;
     object-fit: cover;
     display: block;
-    transition: 0.4s;
+    transition: transform 0.4s linear;
+}
+.project-image img:hover{
+    transform: scale(1.1);
 }
 
 .project-info{
@@ -261,13 +331,86 @@ nav a:hover{
     border-radius: 4px;
     font-size: 12px;
 }
-.contact{
-    text-align: center;
-    background-color: #F8F3EC;
-}
-.contact p{
+/* =========================
+   CONTACT FORM
+========================= */
+
+.contact-intro {
     color: #666;
-    margin: 0 0 20px;
+    margin-bottom: 30px;
+}
+
+.contact-form {
+    width: 90%;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 30px;
+    background-color: #FDFBF7;
+    border: 1px solid #E5DDD2;
+    border-radius: 12px;
+    text-align: left;
+}
+
+.form-group {
+    margin-bottom: 18px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 7px;
+    color: #315C50;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid #D8D0C5;
+    border-radius: 6px;
+    background-color: #F8F3EC;
+    color: #333;
+    font-family: Arial, sans-serif;
+    font-size: 15px;
+    outline: none;
+    transition: border-color 0.3s ease,
+                box-shadow 0.3s ease;
+}
+
+.form-group textarea {
+    resize: vertical;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: #315C50;
+    box-shadow: 0 0 0 3px rgba(49, 92, 80, 0.08);
+}
+
+.contact-btn {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    background-color: #315C50;
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease,
+                color 0.3s ease,
+                transform 0.2s ease;
+}
+
+.contact-btn:hover {
+    background-color: #C9A66B;
+    color: #315C50;
+    transform: translateY(-3px);
+}
+
+.contact-btn:active {
+    transform: scale(0.96);
 }
 footer{
     padding: 22px;
@@ -279,48 +422,38 @@ footer p{
     margin: 0;
     font-size: 14px;
 }
-@media (max-width: 1440px){
+@media (max-width: 768px) {
     header {
-        padding: 15px 30px;
-    }
-    nav{
-        gap: 18px;
-    }
-    .home{
-        gap: 40px;
-    }
-    .home h1{
-        font-size: 43px;
-    }
-    .home h2{
-        font-size: 21px;
-    }
-    .home-photo{
-        width: 280px;
-    }
-    .photo-box{
-        width: 280px;
-        height: 340px;
-    }
-    .about-content{
-        gap: 35px;
-    }
-}
-@media (max-width: 768px){
-    header {
+        position: relative;
         padding: 20px;
+        flex-direction: row;
+    }
+    .menu-btn {
+        display: block;
+    }
+    nav {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        width: 50%;
+        background-color: #F8F3EC;
+        display: none;
         flex-direction: column;
-        gap: 15px;
+        align-items: center;
+        gap: 0;
+        padding: 15px 0;
+        border-bottom: 1px solid #E5DDD2;
+        z-index: 1000;
     }
-    nav{
-        justify-content: center;
-        gap: 10px 16px;
+    nav.active {
+        display: flex;
     }
-
-    nav a{
-        font-size: 14px;
+    nav a {
+        width: 100%;
+        padding: 12px;
+        text-align: center;
     }
-    .home{
+    .home {
         width: 92%;
         min-height: auto;
         padding: 55px 0;
@@ -328,70 +461,70 @@ footer p{
         text-align: center;
         gap: 35px;
     }
-    .home h1{
+    .my-name {
         font-size: 36px;
     }
-    .home h2{
+    .home h2 {
         font-size: 20px;
     }
-    .intro{
+    .intro {
         font-size: 16px;
     }
-    .home-btns{
+    .home-btns {
         justify-content: center;
     }
-    .home-photo{
+    .home-photo {
         width: 100%;
         display: flex;
         justify-content: center;
     }
-    .photo-box{
+    .photo-box {
         width: 280px;
         height: 320px;
         max-width: 100%;
     }
-    .about,.skills,
-    .projects,.contact {
+    .about,
+    .skills,
+    .projects,
+    .contact {
         padding: 55px 0;
     }
-    .section-title{
+    .section-title {
         margin-bottom: 30px;
     }
-    .section-title h2{
+    .section-title h2 {
         font-size: 30px;
     }
-    .about-content{
+    .about-content {
         width: 92%;
         flex-direction: column;
         gap: 25px;
     }
-    .about-text{
-        padding: 0;
-    }
-    .about-text p{
+    .about-text p {
         font-size: 15px;
     }
-    .skills-box{
+    .skills-box {
         width: 92%;
         grid-template-columns: 1fr;
         gap: 14px;
     }
-    .skill{
+    .skill {
         padding: 20px;
     }
-    .projects-box{
+    .projects-box {
         width: 92%;
         grid-template-columns: 1fr;
         gap: 18px;
     }
-    .project-image{
+    .project-image {
         height: 190px;
     }
-    .contact p{
-        font-size: 15px;
+    .contact-form {
+        width: 92%;
+        padding: 22px;
     }
 }
-@media (max-width: 375px){
+@media (max-width: 375px) {
     .home h1 {
         font-size: 32px;
     }
@@ -401,15 +534,26 @@ footer p{
     .home-btns {
         flex-direction: column;
     }
-    .btn, .btn2{
+    .btn,
+    .btn2 {
         width: 100%;
         text-align: center;
     }
-    .photo-box{
+    .photo-box {
         width: 250px;
         height: 300px;
     }
-    .section-title h2{
+    .section-title h2 {
         font-size: 28px;
+    }
+}
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
     }
 }
